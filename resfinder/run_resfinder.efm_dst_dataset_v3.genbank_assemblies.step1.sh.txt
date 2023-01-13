@@ -1,0 +1,33 @@
+#!/bin/bash
+
+set -e
+
+# This bash script is used to run ResFinder from de novo assemblies
+# NOTE: it could also be run from fastq files
+
+base_dir=""; # local directory to run and save ResFinder results: to be edited
+assembly_dir=$base_dir"/assemblies/fasta/";
+accessions_file="efm_dst_dataset_v2.assembly_accessions.txt";
+accessions=`cat $accessions_file | awk -F'\t' '{ print $1}'`;
+resfinder_out_dir=$base_dir"/resfinder/resfinder_results/";
+work_dir=$base_dir"/resfinder/resfinder/";
+db_point_kma=$base_dir"/resfinder/resfinder/db_pointfinder/";
+db_res_kma=$base_dir"/resfinder/resfinder/db_resfinder/";
+
+cd $work_dir
+
+for sample in $accessions
+do
+
+assembly=$assembly_dir$sample".fa";
+echo $assembly
+echo $sample
+out_dir=$resfinder_out_dir$sample"_resfinder";
+out_results=$out_dir"/results.txt";
+
+if [ ! -f $out_results ]
+then
+	bsub -q normal -G team81 -J $sample"_resfinder" -o $sample"_resfinder.out" -R "select[mem > 2000] rusage[mem=2000]" -M 2000 "python3 ~/software/resfinder/run_resfinder.py -ifa $assembly -s \"Enterococcus faecium\" --acquired --point --outputPath $out_dir --db_path_point_kma $db_point_kma --db_path_res_kma $db_res_kma"
+fi
+
+done

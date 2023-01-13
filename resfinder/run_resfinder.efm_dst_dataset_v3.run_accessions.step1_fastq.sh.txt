@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+# This bash script is used to run ResFinder from fastq files
+# NOTE: the latest ResFinder version (4.1.10) and database were downloaded on 03/03/2022
+# NOTE: the options "--db_path_point_kma $db_point_kma --db_path_res_kma $db_res_kma" are used to point to the latest databases
+
+base_dir=""; # local directory to run and save ResFinder results: to be edited
+fastq_dir_files="efm_dst_dataset_v3.run_accessions.paths.txt"; # file with full path to directories with paired-end fastq files
+work_dir=$base_dir"/resfinder/resfinder/";
+db_point_kma=$base_dir"/resfinder/resfinder/db_pointfinder/";
+db_res_kma=$base_dir"/resfinder/resfinder/db_resfinder/";
+
+cd $work_dir
+
+laFastqs=`awk -F'\t' '{ print $1}' $fastq_dir_files`;
+resfinder_out_dir=$dir"resfinder_results/";
+
+for path in $laFastqs
+do
+
+echo $path
+sample=`echo $path | awk -F'/' '{ print $NF }'`;
+echo $sample
+out_dir=$resfinder_out_dir$sample"_resfinder";
+out_results=$out_dir"/results.txt";
+fastq1=$path"/"$sample"_1.fastq.gz";
+fastq2=$path"/"$sample"_2.fastq.gz";
+
+if [ ! -f $out_results ]
+then
+	bsub -q normal -G team81 -J $sample"_resfinder" -o $sample"_resfinder.out" -R "select[mem > 2000] rusage[mem=2000]" -M 2000 "python3 ~/software/resfinder/run_resfinder.py -ifq $fastq1 $fastq2 -s \"Enterococcus faecium\" --acquired --point --outputPath $out_dir --db_path_point_kma $db_point_kma --db_path_res_kma $db_res_kma"
+fi
+
+done

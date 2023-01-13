@@ -1,0 +1,84 @@
+gentamicin
+tobramycin
+streptomycin
+amikacin
+isepamicin
+dibekacin
+kanamycin
+neomycin
+lividomycin
+paromomycin
+ribostamycin
+butiromycin
+butirosin
+hygromycin
+netilmicin
+apramycin
+sisomicin
+arbekacin
+kasugamycin
+astromicin
+fortimicin
+spectinomycin
+fluoroquinolone
+ciprofloxacin
+nalidixic acid
+amoxicillin
+amoxicillin+clavulanic acid
+ampicillin
+ampicillin+clavulanic acid
+cefepime
+cefixime
+cefotaxime
+cefoxitin
+ceftazidime
+ertapenem
+imipenem
+meropenem
+piperacillin
+piperacillin+tazobactam
+aztreonam
+cefotaxime+clavulanic acid
+temocillin
+ticarcillin
+ceftazidime+avibactam
+penicillin
+ceftriaxone
+ticarcillin+clavulanic acid
+cephalothin
+cephalotin
+piperacillin+clavulanic acid
+sulfamethoxazole
+trimethoprim
+fosfomycin
+vancomycin
+teicoplanin
+lincomycin
+clindamycin
+dalfopristin
+pristinamycin iia
+virginiamycin m
+quinupristin+dalfopristin
+tiamulin
+carbomycin
+erythromycin
+azithromycin
+oleandomycin
+spiramycin
+tylosin
+telithromycin
+tetracycline
+doxycycline
+minocycline
+tigecycline
+quinupristin
+pristinamycin ia
+virginiamycin s
+linezolid
+chloramphenicol
+florfenicol
+colistin
+fusidic acid
+mupirocin
+rifampicin
+metronidazole

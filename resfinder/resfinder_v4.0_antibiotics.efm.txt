@@ -1,0 +1,12 @@
+ampicillin
+vancomycin
+ciprofloxacin
+chloramphenicol
+tigecycline
+fosfomycin
+teicoplanin
+erythromycin
+linezolid
+tetracycline
+gentamicin
+quinupristin+dalfopristin
