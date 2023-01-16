@@ -1,1 +1,1 @@
-This directory contains input files and scripts to run ARIBA and call resistance from E. faecium genomes
+This directory contains input files and scripts to run ARIBA and call resistance from E. faecium genomes based on our curated catalogue of AMR genetic determinants for *E. faecium* (see directory amr_database)
