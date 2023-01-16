@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -e
+
+# This bash script run Snippy from assembly genomes
+
+module load snippy/4.6.0
+#   snippy 4.6.0 - fast bacterial variant calling from NGS reads
+# NOTE: genbank file provided as reference to Snippy to get VCF files annotated
+
+base_dir=""; # to be edited
+
+paths_file=$base_dir"/mapping/efm_dst_dataset_v3.run_accessions.paths.txt";
+
+reference=$base_dir"/mapping/Enterococcus_faecium_Aus0004.CP003351.1.gb";
+
+snippy_dir=$base_dir"/mapping/snippy/";
+
+ref="Aus0004";
+
+laPaths=`awk -F'\t' '{ print $1}' $paths_file`;
+
+for path in $laPaths
+do
+
+	echo $path
+	sample=`echo $path | awk -F'/' '{ print $NF}'`;
+	echo $sample
+
+	fastq1=$path"/"$sample"_1.fastq.gz";
+	fastq2=$path"/"$sample"_2.fastq.gz";
+	out_dir=$snippy_dir$sample"_"$ref;
+	out_vcf=$out_dir"/snps.vcf";
+
+	if [ -f $fastq1 ]
+	then
+		if [ ! -f $out_vcf ]
+		then
+			bsub -q normal -G team81 -J $sample"_"$ref"_snippy" -o $sample"_"$ref"_snippy.out" -n8 -R "span[hosts=1] select[mem > 20000] rusage[mem=20000]" -M 20000 "snippy --outdir $out_dir --ref $reference --R1 $fastq1 --R2 $fastq2"
+		fi
+	fi
+done
