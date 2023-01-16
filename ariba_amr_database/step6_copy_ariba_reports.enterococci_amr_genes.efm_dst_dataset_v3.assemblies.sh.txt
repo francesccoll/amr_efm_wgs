@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -e
+
+# This bash script copies Ariba reports into the same directory
+
+base_dir=""; # to be edited
+
+project_dir=$base_dir"/ariba_amr_database/ariba_files_v0.3/";
+
+ariba_reports_dir=$base_dir"/ariba_amr_database/ariba_reports_v0.3/";
+
+samples_file=$base_dir"efm_dst_dataset_v3.assembly_accessions.txt";
+
+laSamples=`awk -F'\t' '{ print $1}' $samples_file`;
+
+for sample in $laSamples
+do
+	echo $sample
+	
+	output_dir=$project_dir$sample"_ariba/";
+
+	ariba_report0=$output_dir"report.tsv";
+
+	ariba_report=$ariba_reports_dir$sample".report.tsv";
+
+	if [ -f $ariba_report0 ]
+	then
+		if [ ! -f $ariba_report ]
+		then
+			cp $ariba_report0 $ariba_report
+		fi
+	else
+		echo $ariba_report0" NOT FOUND"
+	fi
+done

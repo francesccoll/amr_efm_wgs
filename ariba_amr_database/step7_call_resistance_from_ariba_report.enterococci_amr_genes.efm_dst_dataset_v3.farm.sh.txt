@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+# This bash script parses ARIBA reports for enterococci_amr_genes database to call resistance using script call_resistance_from_ariba_report.py
+
+base_dir=""; # to be edited
+
+ariba_reports_dir=$base_dir"/ariba_amr_database/ariba_reports_v0.3/";
+
+samples_file=$base_dir"efm_dst_dataset_v3.all.sample_ids.txt";
+
+genes_file=$base_dir"genes_file.v0.3.txt"; # NOTE: edit the local full path to gene sequences in this file
+
+look_up_table=$base_dir"enterococci_amr_genes.v0.3.look-up_table.csv";
+
+snippy_dir=$base_dir"/mapping/snippy/"; # path to Snippy derived VCF files (recommended to increase sensitivity of detection of AMR mutations not resolved by ARIBA)
+
+laSamples=`awk -F'\t' '{ print $1}' $samples_file`;
+
+script="call_resistance_from_ariba_report.py";
+
+for sample in $laSamples
+do
+
+echo $sample
+
+ariba_report=$ariba_reports_dir$sample".report.flag.tsv"; # NOTE: the option --use_ariba_flag is used to make use of ARIBA assembled flag, which will rescue genes assembled into multiple contigs
+
+output_prefix=$ariba_reports_dir$sample".enterococci_amr_genes.v0.3.ariba.flag_vcf";
+
+vcf_file=$snippy_dir$sample"_Aus0004/snps.vcf"; # NOTE: edit if necessary to point to Snippy VCF file for that sample (recommended to increase sensitivity of detection of AMR mutations not resolved by ARIBA)
+
+if [ -f $ariba_report ]
+then
+	if [ -f $vcf_file ]
+	then
+		if [ ! -f $output_prefix".pheno.txt" ]
+		then
+			bsub -q normal -G team81 -J $sample"_call" -o $sample"_call.out" -R "select[mem > 2000] rusage[mem=2000]" -M 2000 "python3 $script --look_up_table $look_up_table --ariba_report $ariba_report --output_prefix $output_prefix --input_genes $genes_file --sample_id $sample --use_ariba_flag --vcf_file $vcf_file"
+		fi
+	else
+		echo $vcf_file" not found"
+	fi
+else
+	echo $ariba_report" not found"
+fi
+
+done

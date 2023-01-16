@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+# This bash script runs Ariba expandflag command on all Ariba reports (needed for downstream interpretation purposes by script call_resistance_from_ariba_report.py)
+
+module load ariba/release-v2.14.6
+
+base_dir=""; # to be edited
+
+ariba_reports_dir=$base_dir"/ariba_amr_database/ariba_reports_v0.3/";
+
+paths_file="efm_dst_dataset_v3.run_accessions.paths.txt";
+
+cat $paths_file | while read path
+do
+
+	echo $path
+
+	sample=`echo $path | awk -F'/' '{ print $NF}'`;
+	
+	echo $sample
+
+	ariba_report=$ariba_reports_dir$sample".report.tsv";
+
+	ariba_report2=$ariba_reports_dir$sample".report.flag.tsv";
+
+	if [ -f $ariba_report ]
+	then
+		if [ ! -f $ariba_report2 ]
+		then
+			bsub -q normal -G team81 -J $sample -o $sample".out" -R "select[mem > 2000] rusage[mem=2000]" -M 2000 ariba expandflag $ariba_report $ariba_report2
+		else
+			echo $ariba_report2" ALREADY FOUND"
+		fi
+	else
+		echo $ariba_report" NOT FOUND"
+	fi
+done

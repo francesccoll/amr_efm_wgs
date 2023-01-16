@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+# This bash script parses reports produced by call_resistance_from_ariba_report.py into a single file
+
+base_dir=""; # to be edited
+
+cd $base_dir"/ariba_amr_database/ariba_reports_v0.3/"
+
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.txt | grep -v "^sample" > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.txt
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.txt | grep "^sample" | head -n 1 > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.header.txt
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.txt | grep -v "^sample" > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.txt
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.txt | grep "^sample" | head -n 1 > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.header.txt
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.txt | grep -v "^sample" > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.txt
+cat *.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.txt | grep "^sample" | head -n 1 > ../efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.header.txt
+
+cd ..
+
+cat efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.txt > efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.csv
+cat efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.txt > efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.csv
+cat efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.txt > efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.csv
+
+rm efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.pheno.txt
+rm efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno.txt
+rm efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.header.txt efm_dst_dataset_v3.enterococci_amr_genes.v0.3.ariba.flag_vcf.geno_all.txt

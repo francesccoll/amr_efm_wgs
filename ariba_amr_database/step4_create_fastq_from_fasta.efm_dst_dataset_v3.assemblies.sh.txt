@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -e
+
+# This bash script run bash script create_paired_fastq_from_fasta.sh to create paired-end fastq files from assemblies (needed to run ARIBA from assembly files)
+
+module load fastaq/3.17.0-docker3
+
+base_dir=""; # to be edited
+
+samples_file=$base_dir"efm_dst_dataset_v3.assembly_accessions.txt";
+
+fasta_dir=$base_dir"/assemblies/";
+
+fastq_dir=$base_dir"/ariba_amr_database/tmp_fastq/";
+
+laSamples=`awk -F'\t' '{ print $1}' $samples_file`;
+
+for sample in $laSamples
+do
+	echo $sample
+	fasta=$fasta_dir"/"$sample".fa";
+
+	if [ -f $fasta ]
+	then
+		bsub -q normal -G team81 -J $sample"_fastaq" -o $sample"_fastaq.out" -n8 -R "span[hosts=1] select[mem > 20000] rusage[mem=20000]" -M 20000 "bash create_paired_fastq_from_fasta.sh $fasta $sample $fastq_dir"
+	fi
+done
