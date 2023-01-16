@@ -1,0 +1,43 @@
+#!/bin/bash
+
+set -e
+
+# This bash script is used to run LRE-finder
+# version 1.0.0 used
+# NOTE: no newer version of LRE-finder uploaded since 1.0.0 (no commits since 2019, https://bitbucket.org/genomicepidemiology/lre-finder/src/master/)
+
+base_dir=""; # to be edited
+
+paths_file=$base_dir"efm_dst_dataset_v3.run_accessions.paths.txt";
+
+dir=$base_dir"/lre_finder/";
+
+out_dir=$base_dir"/lre_finder/lre_finder_results/";
+
+script="/nfs/users/nfs_f/fc4/software/lre-finder/LRE-Finder.py";
+
+database="/nfs/users/nfs_f/fc4/software/lre-finder/elmDB/elm";
+
+laPaths=`awk -F'\t' '{ print $1}' $paths_file`;
+
+out_dir=$dir"lre_finder_results/";
+
+for path in $laPaths
+do
+
+echo $path
+sample=`echo $path | awk -F'/' '{ print $NF}'`;
+echo $sample
+
+fastq1=$path"/"$sample"_1.fastq.gz";
+fastq2=$path"/"$sample"_2.fastq.gz";
+
+if [ -f $fastq1 ]
+then
+	out_report=$out_dir$sample"_lre_finder_results.res"
+	if [ ! -f $out_report ]
+	then
+		bsub -q normal -G team81 -J $sample"_lre" -o $sample"_lre.out" -R "select[mem > 20000] rusage[mem=20000]" -M 20000 "python $script -ipe $fastq1 $fastq2 -o $out_report -t_db $database -ID 80 -1t1 -cge -matrix"
+	fi
+fi
+done

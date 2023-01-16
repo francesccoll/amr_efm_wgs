@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -e
+
+# This bash script is used to process LRE-finder output files
+
+base_dir=""; # to be edited
+
+paths_file=$base_dir"/efm_dst_dataset_v3.run_accessions.paths.txt";
+
+output_dir=$base_dir"/lre_finder/lre_finder_results/";
+
+script="process_lre-finder_results.py";
+
+laPaths=`awk -F'\t' '{ print $1}' $paths_file`;
+out_dir=$dir"lre_finder_results/";
+
+for path in $laPaths
+do
+
+echo $path
+sample=`echo $path | awk -F'/' '{ print $NF}'`;
+echo $sample
+
+pos_file=$output_dir"/"$sample"_lre_finder_results.res.pos";
+if [ ! -f $pos_file ]
+then
+	pos_file=$output_dir"/"$sample"_lre_finder_results.pos";
+fi
+res_file=$output_dir"/"$sample"_lre_finder_results.res.res";
+if [ ! -f $res_file ]
+then
+	res_file=$output_dir"/"$sample"_lre_finder_results.res";
+fi
+
+if [ -f $pos_file ]
+then
+	if [ -f $res_file ]
+	then
+		python3 $script --sample_id $sample --res_file $res_file --pos_file $pos_file
+	fi
+fi
+done
+
+# final steps done manually
+# cd /nfs/users/nfs_f/fc4/lustre_scratch118/55.e_faecium_amr_prediction/lre_finder/lre_finder_results
+# cat *.lre_finder.txt | grep -v "sample_id" | sort | uniq > ../efm_dst_dataset_v3.run_accessions.lre_finder.txt 
+# header added manually
