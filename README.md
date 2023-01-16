@@ -1,5 +1,5 @@
 # Antimicrobial resistance (amr) detection from *Enterococcus faecium* (efm) whole-genome sequences (wgs)
-ARIBA-based pipeline for genotypic prediction of AMR from whole-genome sequences of Enterococcus faecium
+ARIBA-based pipeline for genotypic prediction of AMR from whole-genome sequences of *Enterococcus faecium*
 
 This GitHub project contains the data and code necessary to reproduce the findings of the study 'Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences', and includes the following directories:
 * amr_database: directory with database (catalogue) of AMR genetic determinants for *E. faecium* and scripts needed to transform it into an ARIBA-compliant format.
@@ -16,10 +16,16 @@ This GitHub project contains the data and code necessary to reproduce the findin
 
 ## ARIBA-based pipeline
 
-* ARIBA
-* Snippy
+* [ARIBA](https://github.com/sanger-pathogens/ariba) version >= 2.14.6
+* [ARIBA](https://github.com/sanger-pathogens/ariba#required-dependencies) dependencies
+* [Snippy](https://github.com/tseemann/snippy) version >= 4.6.0
+* [fastaq](https://github.com/sanger-pathogens/Fastaq) version >=3.17.0
 
 ## Other tools used
+* [AMRFinderPlus](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) version 3.10.18; amrfinder database version: 2021-12-21.1
+* [CARD RGI](https://github.com/arpcard/rgi) rgi version v5.2.1; CARD database v3.1.4
+* [ResFinder](https://bitbucket.org/genomicepidemiology/resfinder/src/master/) version 4.1.10; database downloaded 03/03/2022
+* [LRE-Finder](https://bitbucket.org/genomicepidemiology/lre-finder/src/master/) version 1.0.0
 
 # Citation
 
