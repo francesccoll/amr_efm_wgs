@@ -19,7 +19,7 @@ This GitHub project contains the data and code necessary to reproduce the findin
 * [ARIBA](https://github.com/sanger-pathogens/ariba) version >= 2.14.6
 * [ARIBA](https://github.com/sanger-pathogens/ariba#required-dependencies) dependencies
 * [Snippy](https://github.com/tseemann/snippy) version >= 4.6.0
-* [fastaq](https://github.com/sanger-pathogens/Fastaq) version >=3.17.0
+* [fastaq](https://github.com/sanger-pathogens/Fastaq) version >= 3.17.0
 
 ## Other tools used
 * [AMRFinderPlus](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) version 3.10.18; amrfinder database version: 2021-12-21.1
@@ -29,4 +29,4 @@ This GitHub project contains the data and code necessary to reproduce the findin
 
 # Citation
 
-Coll F, et al. Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences. (submitted for publication)
+Coll F, *et al.* Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences. (submitted for publication)
