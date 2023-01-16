@@ -1,0 +1,23 @@
+
+
+## Obtain list of antibiotics predicted by RGI, extracted from all RGI output files
+
+base_dir=""; # to be edited
+dir=$base_dir"/card_rgi/";
+rgi_output_dir=$dir"rgi_output/";
+
+cd $rgi_output_dir
+
+cat *_rgi.txt | awk -F'\t' '{ print $15}' | tr ';' '\n' | sed 's/^\s//g' | grep -v "Drug Class" | sort | uniq > ../rgi_card_predicted_antibiotics.txt
+
+## Gathering all RGI results
+
+cd $dir
+
+list_of_samples="efm_dst_dataset_v3.all.sample_ids.txt";
+list_of_antibiotics="rgi_card_predicted_antibiotics.txt";
+
+python3 collect_rgi_results.py --list_of_samples $list_of_samples --list_of_antibiotics $list_of_antibiotics --rgi_out_dir $rgi_output_dir --output_phenotypes_file efm_dst_dataset_v3.rgi_card_phenotypes.csv --output_genotypes_file efm_dst_dataset_v3.rgi_card_genotypes.csv
+
+
+

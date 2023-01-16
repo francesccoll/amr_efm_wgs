@@ -1,0 +1,51 @@
+
+# NOTE: this is an attempt to build a docker image of the latest version of RGI that works on the farm
+# NOTE: see test_rgi_docker_image_on_mac.txt.
+# NOTE: the already built RGI docker image (quay.io/biocontainers/rgi:5.1.1--py_0) could be installed 
+
+cd /Users/francesccoll/fellowship/2.projects/55.e_faecium_amr_prediction/rgi_card/docker
+
+docker buildx build --push --platform linux/amd64 --tag francesccoll/rgi:amd64 .
+
+# building and testing on Mac
+docker build --tag francesccoll/rgi:arm64 .
+# output clipped, log limit 1MiB reached
+
+# testing docker image on Mac
+docker run -v $PWD:/data francesccoll/rgi:arm64 rgi --help
+# Resistance Gene Identifier - 5.2.1
+
+docker run -v $PWD:/data francesccoll/rgi:arm64 rgi database --version
+# 3.1.4
+
+docker run -v $PWD:/data francesccoll/rgi:arm64 rgi main --input_sequence /data/10678_8#35.contigs.fa --output_file /data/10678_8#35.rgi.txt --input_type contig --clean
+# it worked
+
+
+# on the farm
+
+module load ISG/singularity
+
+export HTTP_PROXY="wwwcache.sanger.ac.uk:3128"
+export HTTPS_PROXY="${HTTP_PROXY}"
+
+# The francesccoll/rgi:amd64 version downloaded
+# the bash variables SINGULARITY_TMPDIR and SINGULARITY_CACHEDIR must be set to lustre directories as there is not enough space on the home directory (where cache files are downloaded by default) to build the singularity image
+# see https://github.com/apptainer/singularity/issues/1052
+# Commands run only once to build local singularity image:
+cd /nfs/users/nfs_f/fc4/lustre_scratch118/55.e_faecium_amr_prediction/card_rgi
+
+singularity cache clean
+bsub -q yesterday -G team81 -J singularity -e singularity_pull.err -o singularity_pull.out -R "select[mem > 10000] rusage[mem=10000]" -M 10000 "SINGULARITY_TMPDIR=/lustre/scratch118/malaria/team112/personal/fc4/software/singularity/tmp SINGULARITY_CACHEDIR=/lustre/scratch118/malaria/team112/personal/fc4/software/singularity/cache singularity build rgi_fc.sif docker://francesccoll/rgi:amd64"
+
+
+# testing docker image on farm using singularity
+
+rgi_image="/nfs/users/nfs_f/fc4/lustre_scratch118/55.e_faecium_amr_prediction/card_rgi/rgi_fc.sif";
+
+singularity run -B "/lustre/scratch118/malaria/team112/personal/fc4/55.e_faecium_amr_prediction/card_rgi" $rgi_image rgi --help
+# Resistance Gene Identifier - 5.2.1
+
+singularity run -B "/lustre/scratch118/malaria/team112/personal/fc4/55.e_faecium_amr_prediction/card_rgi" $rgi_image rgi database --version
+# 3.1.4
+

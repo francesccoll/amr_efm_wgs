@@ -1,0 +1,59 @@
+#!/bin/bash
+
+set -e
+
+# This bash script is used to run RGI docker container from de novo assemblies on the farm
+# NOTE: see build_docker_image.rgi.sh.txt on how a docker image of RGI was built
+# NOTE: rgi v5.2.1
+# NOTE: CARD database v3.1.4
+
+module load ISG/singularity
+
+# Downloading latest RGI image (https://github.com/arpcard/rgi#install-rgi-using-docker-singularity)
+# Commands needed to make singularity pull work when submitted as a job
+export HTTP_PROXY="wwwcache.sanger.ac.uk:3128"
+export HTTPS_PROXY="${HTTP_PROXY}"
+
+base_dir=""; # to be edited
+
+assemblies_file=$base_dir"efm_dst_dataset_v3.run_accessions.on_farm.assembly_paths.txt"; # file with full path de novo assemblies
+dir=$base_dir"/card_rgi/";
+rgi_image=$base_dir"/card_rgi/rgi_fc.sif";
+rgi_output_dir=$dir"rgi_output/";
+
+# Run only once to download latest CARD database
+# wget https://card.mcmaster.ca/latest/data --no-check-certificate
+# tar -xvf data ./card.json
+# rm data
+# singularity run -B "$base_dir/card_rgi" $rgi_image rgi load --card_json card.json --local
+# singularity run -B "$base_dir/card_rgi" $rgi_image rgi database -v
+# 3.1.4
+
+cd $dir
+
+laAssemblies=`awk -F'\t' '{ print $1}' $assemblies_file`;
+
+for assembly in $laAssemblies
+do
+
+echo $assembly
+sample=`echo $assembly | awk -F'/' '{ print $(NF-2) }'`;
+echo $sample
+rgi_output=$rgi_output_dir$sample"_rgi";
+local_assembly=$sample".contigs.fa";
+
+if [ -f $assembly ]
+then
+	echo "Assembly file found!"
+	if [ ! -f $rgi_output".txt" ]
+	then
+		echo "Copying assembly locally..."
+		cp $assembly $local_assembly
+		echo "RGI output not found"
+		echo "Running singularity..."
+		bsub -q normal -G team81 -J $sample"_rgi" -o $sample"_rgi.out" -R "select[mem > 20000] rusage[mem=20000]" -M 20000 "singularity run -B $dir $rgi_image rgi main --input_sequence $local_assembly --output_file $rgi_output --input_type contig --clean --local"
+		
+	fi
+fi
+
+done
