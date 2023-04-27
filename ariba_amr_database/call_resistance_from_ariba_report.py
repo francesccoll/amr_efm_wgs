@@ -12,20 +12,6 @@ import gzip
 # Notes
 # ---------------------------------------------------------------------------------------------------------------------
 
-# This python script is used to call antibiotic susceptibility from ARIBA reports
-# This script is currently under development, the following features still need to be implemented:
-#   - if nucleotide indels are added to look-up table, from_garc_to_ariba_hgvs_ins need to be modified, atm expects aa
-#   - Calculate number of copies for genes and call resistance based on number of genes
-#   - Wildcard annotated mutations (e.g. pbp5_*! meaning any stop codon) not currently interpreted
-#   - Hierarchical rules (that is when the effect of one determinant should over-rule that of another determinant)
-#     has not been not implemented yet (e.g. a loss-of-function mutation in pbp5 conferring susceptibility should
-#     over-rule any other pbp5 mutation conferring resistance)
-#   - The detection of heterozygous calls only work for heterozygous nucleotide SNPs ATM. Detection of HET aa or indels
-#     needs to be implemented
-#   - Simplify how variant annotation is dealt with. At the moment, look-up table, ARIBA and SnpEff Snippy VCF each use
-#     a different variant annotation
-#   - To extract non-protein coding mutations (i.e. rRNA) from SnpEff-annotated Snippy VCF files
-
 # Changes made with respect to previous version v0.0
 #   - Added detection of heterozygous nucleotide SNPs
 #   - Nucleotide changes from ARIBA report were converted to lower case to allow comparison with look-up table
