@@ -1,0 +1,3 @@
+input fasta file:	enterococci_amr_genes.v0.3.ariba_genes.fa
+input tsv file:	enterococci_amr_genes.v0.3.ariba_metadata.csv
+genetic_code	11

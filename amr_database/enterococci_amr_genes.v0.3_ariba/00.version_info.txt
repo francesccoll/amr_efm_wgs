@@ -1,0 +1,28 @@
+ARIBA run with this command:
+/usr/local/bin/ariba prepareref prepareref -f enterococci_amr_genes.v0.3.ariba_genes.fa -m enterococci_amr_genes.v0.3.ariba_metadata.csv enterococci_amr_genes_ariba.v0.3 --force --verbose
+from this directory: /lustre/scratch118/infgen/team346/fc4/55.e_faecium_amr_prediction/ariba_amr_database
+
+ARIBA version: 2.14.6
+
+External dependencies:
+bowtie2	2.2.9	/bowtie2-2.2.9/bowtie2
+cdhit	4.7	/usr/bin/cdhit-est
+nucmer	3.1	/usr/bin/nucmer
+
+External dependencies OK: True
+
+Python version:
+3.6.9 (default, Jul 17 2020, 12:50:27) 
+[GCC 8.4.0]
+
+Python packages:
+ariba	2.14.6	/usr/local/lib/python3.6/dist-packages/ariba-2.14.6-py3.6-linux-x86_64.egg/ariba/__init__.py
+bs4	4.9.3	/nfs/users/nfs_f/fc4/.local/lib/python3.6/site-packages/bs4/__init__.py
+dendropy	4.4.0	/nfs/users/nfs_f/fc4/.local/lib/python3.6/site-packages/dendropy/__init__.py
+pyfastaq	3.17.0	/usr/local/lib/python3.6/dist-packages/pyfastaq-3.17.0-py3.6.egg/pyfastaq/__init__.py
+pymummer	0.10.3	/usr/local/lib/python3.6/dist-packages/pymummer-0.10.3-py3.6.egg/pymummer/__init__.py
+pysam	0.16.0.1	/nfs/users/nfs_f/fc4/.local/lib/python3.6/site-packages/pysam/__init__.py
+
+Python packages OK: True
+
+Everything looks OK: True

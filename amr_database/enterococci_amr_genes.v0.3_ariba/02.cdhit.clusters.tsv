@@ -1,0 +1,111 @@
+cluster	23SrRNA
+cluster_1	efmA
+cluster_10	rplD
+cluster_100	tetW	tetWNW
+cluster_101	pbp5
+cluster_102	gyrB
+cluster_103	yycG
+cluster_104	gdpD
+cluster_105	eatA
+cluster_106	cls
+cluster_107	clsB
+cluster_108	yycH
+cluster_109	murA
+cluster_11	HDprotein
+cluster_110	cfa
+cluster_12	rplV
+cluster_13	efrA
+cluster_14	rpsJ
+cluster_15	poxtA
+cluster_16	vgaD
+cluster_17	liaX
+cluster_18	atpA
+cluster_19	gdh
+cluster_2	blaR1
+cluster_20	lsaA
+cluster_21	lsaB
+cluster_22	lsaC
+cluster_23	efrB
+cluster_24	msrC
+cluster_25	AAC_6___Ie_APH_2____Ia
+cluster_26	fexA
+cluster_27	fexB
+cluster_28	tetK
+cluster_29	tetL
+cluster_3	liaS
+cluster_30	efmM
+cluster_31	vanSB	vanSB_pE7948
+cluster_32	tet40
+cluster_33	mefA
+cluster_34	aad_6_
+cluster_35	emeA
+cluster_36	tetX
+cluster_37	vanSA
+cluster_38	purK
+cluster_39	ddl
+cluster_4	yycI
+cluster_40	cfrA
+cluster_41	cfrB
+cluster_42	vanA
+cluster_43	vanB	vanB_pE7948
+cluster_44	gyd
+cluster_45	optrA
+cluster_46	ANT_3____Ia
+cluster_47	vanHB	vanHB_pE7948
+cluster_48	vanHA
+cluster_49	APH_2____IIIa
+cluster_5	rrma
+cluster_50	vanYA
+cluster_51	ANT_6__Ia_pAML0157
+cluster_52	APH_2____IVa	APH_2____Ie
+cluster_53	APH_2____IIa
+cluster_54	vgbA
+cluster_55	pstS
+cluster_56	tetT
+cluster_57	ANT_6__Ia
+cluster_58	blaZ
+cluster_59	vanWB	vanWB_pE7948
+cluster_6	liaF
+cluster_60	lnuF
+cluster_61	vanYB	vanYB_pE7948
+cluster_62	lnuB	lsaE
+cluster_63	APH_6__Ic
+cluster_64	APH_3___IIIa
+cluster_65	ANT_9__Ia
+cluster_66	ANT_4___Ia
+cluster_67	tetS
+cluster_68	ermB	ermB_E7067
+cluster_69	ermC
+cluster_7	xpaC
+cluster_70	ermT
+cluster_71	ermA
+cluster_72	ermA_AF002716
+cluster_73	ermA_KT862775
+cluster_74	vanRA
+cluster_75	vanRB	vanRB_pE7948
+cluster_76	catA_pC194
+cluster_77	vatH
+cluster_78	tetM
+cluster_79	adk
+cluster_8	liaR
+cluster_80	catA_pC221	cat_pIP501
+cluster_81	catA_pC223	catA_pSCS7
+cluster_82	vatE
+cluster_83	qnr
+cluster_84	vatD
+cluster_85	vanXA
+cluster_86	vanXB	vanXB_pE7948
+cluster_87	AAC_6___Ii
+cluster_88	lnuC
+cluster_89	tetO
+cluster_9	rplC
+cluster_90	lnuA
+cluster_91	vanZA
+cluster_92	fosB3
+cluster_93	fosB
+cluster_94	fosX
+cluster_95	blaI
+cluster_96	tetU
+cluster_97	rpoB
+cluster_98	gyrA
+cluster_99	parC

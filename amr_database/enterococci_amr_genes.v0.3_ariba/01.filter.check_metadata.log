@@ -1,0 +1,29 @@
+HDprotein variant does not match reference. Removing. Line of file was: HDprotein	1	1	R57H	.	.
+PTS_EIIA variant does not match reference. Removing. Line of file was: PTS_EIIA	1	1	N118K	.	.
+PTS_EIIA No remaining data after checks. Removing this sequence because it is variants only
+cls variant does not match reference. Removing. Line of file was: cls	1	1	R215K	.	.
+cls variant does not match reference. Removing. Line of file was: cls	1	1	N23T	.	.
+ermA_EU348758 was removed because it failed filtering checks, so removing its metadata
+liaF variant does not match reference. Removing. Line of file was: liaF	1	1	L27I	.	.
+liaF variant does not match reference. Removing. Line of file was: liaF	1	1	N102S	.	.
+liaR variant does not match reference. Removing. Line of file was: liaR	1	1	D191N	.	.
+liaS variant does not match reference. Removing. Line of file was: liaS	1	1	N251E	.	.
+pbp5 variant does not match reference. Removing. Line of file was: pbp5	1	1	T499I	.	.
+pbp5 variant does not match reference. Removing. Line of file was: pbp5	1	1	D372E	.	.
+pbp5 variant does not match reference. Removing. Line of file was: pbp5	1	1	T494A	.	.
+pbp5 variant does not match reference. Removing. Line of file was: pbp5	1	1	D520E	.	.
+rplC variant does not match reference. Removing. Line of file was: rplC	1	1	S113L	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	E202R	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	E202K	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	E202G	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	V203G	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	V203W	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	E201V	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	T35A	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	N79D	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	I98V	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	A114V	.	.
+rplD variant does not match reference. Removing. Line of file was: rplD	1	1	S171A	.	.
+sulP variant does not match reference. Removing. Line of file was: sulP	1	1	H71Y	.	.
+sulP No remaining data after checks. Removing this sequence because it is variants only
+yycH variant does not match reference. Removing. Line of file was: yycH	1	1	G386R	.	.
