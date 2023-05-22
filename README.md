@@ -27,6 +27,38 @@ This GitHub project contains the data and code necessary to reproduce the findin
 * [ResFinder](https://bitbucket.org/genomicepidemiology/resfinder/src/master/) version 4.1.10; database downloaded 03/03/2022
 * [LRE-Finder](https://bitbucket.org/genomicepidemiology/lre-finder/src/master/) version 1.0.0
 
+# Installation and Usage
+
+## 1. Download this GitHub project
+And navigate to downloaded directory
+```console
+git clone https://github.com/francesccoll/amr_efm_wgs/
+cd amr_efm_wgs
+```
+
+## 2. Download ARIBA and Snippy's Docker containers
+
+Using Docker
+```console
+docker pull sangerpathogens/ariba
+docker pull staphb/snippy:4.6.0
+```
+
+Or using Singularity
+```console
+singularity build ariba.sif docker://sangerpathogens/ariba:latest
+singularity build snippy-4.6.0.sif docker://staphb/snippy:4.6.0
+```
+
+## 3. Download test data
+```console
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR154/006/ERR1542086/ERR1542086_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR154/006/ERR1542086/ERR1542086_2.fastq.gz
+```
+
+
+
+
 # Citation
 
 Coll F, *et al.* Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences. (submitted for publication)
