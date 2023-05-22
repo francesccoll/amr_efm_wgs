@@ -77,7 +77,7 @@ We noted that ARIBA may miss the detection of Multiple Nucleotide Polymorphism (
 singularity run -B "/absolute/path/to/working/directory/amr_efm_wgs/" snippy-4.6.0.sif snippy --outdir ERR1542086_snippy --ref ./mapping/Enterococcus_faecium_Aus0004.CP003351.1.gb --R1 ERR1542086_1.fastq.gz --R2 ERR1542086_2.fastq.gz
 ```
 Snippy results will be written into ERR1542086_snippy output directory.
-Note that the *E. faecium* reference genome used for mapping (Enterococcus_faecium_Aus0004.CP003351.1.gb) is already available inside the "mapping" directory of this GitHub project.
+Note that the *E. faecium* reference genome used for mapping (Enterococcus_faecium_Aus0004.CP003351.1.gb) is already available inside the `./mapping/` directory of this GitHub project.
 
 ## 6. Call genotypic resistance from ARIBA report and Snippy VCF files
 And finally, use the script call_resistance_from_ariba_report.py:
@@ -85,10 +85,14 @@ And finally, use the script call_resistance_from_ariba_report.py:
 python3 ./scripts/call_resistance_from_ariba_report.py --look_up_table ./amr_database/enterococci_amr_genes.v0.3.look-up_table.csv --input_genes ./amr_database/genes_file.v0.3.txt --ariba_report ./ERR1542086_ariba/report.flag.tsv --vcf_file ./ERR1542086_snippy/snps.vcf --use_ariba_flag --output_prefix ERR1542086 --sample_id ERR1542086
 ```
 Note that the originally-formatted curated database of AMR genetic determinants (enterococci_amr_genes.v0.3.look-up_table.csv) should be used by this script.
+
 This script uses a default threshold of 90% nucleotide identity and 60% threshold of minimum gene length to detect assembled AMR genes from ARIBA reports.
-It also includes the option --use_ariba_flag (recommended) to use ARIBA flags to determine if genes are labelled as assembled.
-A minimum ratio of reads supporting alternative alleles of 10% to call resistance from heterozygous mutations (see option --minimum_ratio_het).
-By default, 
+
+It also includes the option `--use_ariba_flag` (recommended) to use ARIBA flags to determine if genes are labelled as assembled.
+
+A minimum ratio of reads supporting alternative alleles of 10% to call resistance from heterozygous mutations (see option `--minimum_ratio_het`).
+
+By default, the integrity of acquired AMR genes is checked by making sure genes are fully assembled without frameshifts or truncations, as determined by ARIBA. If genes contain frameshifts or truncations, then they are not used to call resistance. This behaviour can be disabled using the option `--ignore_lof_mutations`.
 
 ## 7. Interpreting output files
 
