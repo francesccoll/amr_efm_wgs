@@ -108,11 +108,11 @@ Both files need to be converted to ARIBA-formatted files runnig the script below
 python3 prepare_ariba_files_from_amr_database.py -t enterococci_amr_genes.v0.3.look-up_table.csv -g enterococci_amr_genes.v0.3.gene_sequences.csv -d amr_genes_sequences/ -m enterococci_amr_genes.v0.3.ariba_metadata.csv -f enterococci_amr_genes.v0.3.ariba_genes.fa
 ```
 
-NOTE: `ariba prepareref` will remove some AMR genes with the message `"Does not look like a gene (tried both strands and all reading frames)"`. To avoid that, edit ARIBA metadata file (`enterococci_amr_genes.v0.3.ariba_metadata.csv`) to label the removed genes as non-coding, see example below:
-`aad(6)	0	0	.	.	.
-efmA	0	0	.	.	.
-efrB	0	0	.	.	.
-ermA-EU348758	0	0	.	.	.`
+NOTE: `ariba prepareref` will remove some AMR genes with the message `"Does not look like a gene (tried both strands and all reading frames)"`. To avoid that, edit ARIBA metadata file (`enterococci_amr_genes.v0.3.ariba_metadata.csv`) to label the removed genes as non-coding, see example lines below:
+`aad(6)	0	0	.	.	.`
+`efmA	0	0	.	.	.`
+`efrB	0	0	.	.	.`
+`ermA-EU348758	0	0	.	.	.`
 
 Finally, `ariba prepareref` can be run on the edited output files of `prepare_ariba_files_from_amr_database.py`:
 ```console
