@@ -1,0 +1,8 @@
+
+
+# First, open file enterococci_amr_genes.vX.xlsx with LibreOffice and save tabs 'look-up table' and 'gene_sequence' as separate tab-delimited CSV files
+
+# Command used to convert the enterococci_amr_genes database into ARIBA-compliant files
+
+python3 prepare_ariba_files_from_amr_database.py -t enterococci_amr_genes.v0.3.look-up_table.csv -g enterococci_amr_genes.v0.3.gene_sequences.csv -d amr_genes_sequences/ -m enterococci_amr_genes.v0.3.ariba_metadata.csv -f enterococci_amr_genes.v0.3.ariba_genes.fa
+
