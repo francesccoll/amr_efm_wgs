@@ -1,0 +1,183 @@
+
+# This bash script contains the commands used to extract the gene sequences in enterococci_amr_genes.xlsx
+
+
+## beta-lactams genes
+
+cat X52734.1.fasta | seqkit subseq -r 3165:3545 | seqkit seq --complement --reverse | seqkit replace -p "X52734.1 S.aureus Tn552 transposable element" -r "blaI" > blaI_X52734.1.fa
+
+cat X52734.1.fasta | seqkit subseq -r 3535:5292 | seqkit seq --complement --reverse | seqkit replace -p "X52734.1 S.aureus Tn552 transposable element" -r "blaR1" > blaR1_X52734.1.fa
+
+cat X52734.1.fasta | seqkit subseq -r 5399:6244 | seqkit replace -p "X52734.1 S.aureus Tn552 transposable element" -r "blaZ" > blaZ_X52734.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Com15_CP025022.1.fasta | seqkit subseq -r 1442853:1444889 | seqkit seq --complement --reverse | seqkit replace -p "CP025022.1 Enterococcus faecium Com15 chromosome" -r "pbp5" > pbp5_Com15_CP025022.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_DO.CP003583.1.fasta | seqkit subseq -r 1443763:1445799 | seqkit seq --complement --reverse | seqkit replace -p "CP003583.1 Enterococcus faecium DO, complete genome" -r "pbp5" > pbp5_DO.CP003583.1.fa
+
+
+## fluoroquinoles core genes
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 6208:8679 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "gyrA" > gyrA_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 4242:6188 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "gyrB" > gyrB_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1197446:1199896 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "parC" > parC_Aus0004_CP003351.1.fa
+
+
+## fluoroquinoles acquired genes
+
+# qnr: "A homologue of the qnr gene was identified at the locus EF0905 and named E. faecalis qnr"
+
+cat Enterococcus_faecalis_V583.AE016830.1.fasta | seqkit subseq -r 871088:871723 | seqkit seq --complement --reverse | seqkit replace -p "AE016830.1 Enterococcus faecalis V583 chromosome, complete genome" -r "qnr" > qnr_AE016830.1.fa
+
+## tigecycline genes
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 97346:97654 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rpsJ" > rpsJ_Aus0004_CP003351.1.fa
+
+
+## aminoglycoside genes
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2263174:2264544 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "efmM" > efmM_Aus0004_CP003351.1.fa
+
+## macrolide genes
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2733313:2734791 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "msrC" > msrC_Aus0004_CP003351.1.fa
+
+## phenicol genes
+
+cat NG_047571.1.fasta | seqkit subseq -r 90:719 | seqkit replace -p "NG_047571.1 Staphylococcus aureus 436 catA gene for type A-8 chloramphenicol O-acetyltransferase, complete CDS" -r "catA-pSCS7" > catA-pSCS7_NG_047571.1.fa
+
+cat AY355285.1.fasta | seqkit subseq -r 1000:1647 | seqkit replace -p "AY355285.1 Staphylococcus aureus plasmid pC223, complete sequence" -r "catA-pC223" > catA-pC223_AY355285.1.fa
+
+cat X65462.1.fasta | seqkit subseq -r 208:855 | seqkit replace -p "X65462.1 S.agalactiae plasmid pIP501 cat gene for chloramphenicol acetyltransferase" -r "cat-pIP501" > cat-pIP501_X65462.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 659270:660772 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "eatA" > eatA_Aus0004_CP003351.1.fa
+
+
+## 
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 97685:98314 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rplC" > rplC_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 98342:98965 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rplD" > rplD_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 100471:100818 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rplV" > rplV_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2247165:2250077 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "23SrRNA" > 23SrRNA_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1320461:1323372 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "23SrRNA" > 23SrRNA_v2_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecalis_OG1RF.CP002621.1.fasta | seqkit subseq -r 215899:218809 | seqkit replace -p "CP002621.1 Enterococcus faecalis OG1RF, complete genome" -r "23SrRNA" > 23SrRNA_Efc_CP002621.1.fa
+
+
+
+
+## daptomycin
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1401267:1402334 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "liaS" > liaS_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1400628:1401260 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "liaR" > liaR_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1402331:1403062 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "liaF" > liaF_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2055755:2057323 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "liaX" > liaX_Aus0004_CP003351.1.fa
+
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1278458:1279909 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "cls" > cls_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1278458:1279909 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "clsA" > clsA_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2064854:2066302 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "clsB" > clsB_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2443106:2444941 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "yycG" > yycG_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2441793:2443109 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "yycH" > yycH_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2440923:2441792 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "yycI" > yycI_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1798495:1800294 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "gdpD" > gdpD_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 903873:905039 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "cfa" > cfa_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2489075:2489941 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rrma" > rrma_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 770843:772474 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "sulP" > sulP_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 545841:546503 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "xpaC" > xpaC_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1305259:1305720 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "PTS-EIIA" > PTS-EIIA_Aus0004_CP003351.1.fa
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1963569:1964072 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "HDprotein" > HDprotein_Aus0004_CP003351.1.fa
+
+
+## fosfomycin
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2080498:2081799 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "murA" > murA_Aus0004_CP003351.1.fa
+
+## rifampicin
+
+cat Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2903869:2907486 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "rpoB" > rpoB_Aus0004_CP003351.1.fa
+
+
+
+# erythromycin - ermB Efm frameshift version 
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7067_plasmid_5.NZ_LR135239.1.fasta | seqkit subseq -r 19829:20566 | seqkit replace -p "NZ_LR135239.1 Enterococcus faecium isolate E7067 plasmid 5" -r "ermB-E7067" > ermB-E7067_NZ_LR135239.1.fa
+
+
+cat ../reference_sequences/Enterococcus_faecium_strain_AML0157_plasmid_pAML0157.1.NZ_CP060862.1.fasta | seqkit subseq -r 19907:20815 | seqkit seq --complement --reverse | seqkit replace -p "NZ_CP060862.1 Enterococcus faecium strain AML0157 plasmid pAML0157.1, complete sequence" -r "ANT(6)-Ia-pAML0157" > ANT\(6\)-Ia-pAML0157_NZ_CP060862.1.fa
+
+
+
+## MLST core genes
+# NOTE: the MLST alleles from get_sequence_type output file mlst_results.genomic.csv were blasted against Aus0004 to find out the coordinate of MLST genes
+# NOTE: the whole gene sequence was extracted, although the MLST scheme does not seem to use the entire gene length, but a fraction of it
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2085376:2086932 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "atpA" > atpA_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 210618:211694 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "ddl" > ddl_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 810566:812092 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "gdh" > gdh_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1144972:1146096 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "purK" > purK_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 2101821:2102822 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "gyd" > gyd_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 1910848:1911738 | seqkit seq --complement --reverse | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "pstS" > pstS_Aus0004_CP003351.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_Aus0004_CP003351.1.fasta | seqkit subseq -r 108011:108658 | seqkit replace -p "CP003351.1 Enterococcus faecium Aus0004, complete genome" -r "adk" > adk_Aus0004_CP003351.1.fa
+
+
+## vanB-operon-v2 from Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 41175:42203 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanB-pE7948" > vanB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 40211:41182 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanHB-pE7948" > vanHB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 36387:37046 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanRB-pE7948" > vanRB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 37049:38392 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanSB-pE7948" > vanSB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 39387:40214 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanWB-pE7948" > vanWB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 42209:42817 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanXB-pE7948" > vanXB-pE7948_NZ_LR135359.1.fa
+
+cat ../reference_sequences/Enterococcus_faecium_isolate_E7948_plasmid_3.NZ_LR135359.1.fasta | seqkit subseq -r 38563:39369 | seqkit replace -p "NZ_LR135359.1 Enterococcus faecium isolate E7948 plasmid 3" -r "vanYB-pE7948" > vanYB-pE7948_NZ_LR135359.1.fa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
