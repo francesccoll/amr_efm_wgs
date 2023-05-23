@@ -1,0 +1,2 @@
+sample	ampicillin	teicoplanin	vancomycin	daptomycin	fluoroquinolones	gentamicin	kanamycin	streptomycin	tigecycline	clindamycin	erythromycin	linezolid	quinupristin-dalfopristin	streptogramin A	streptogramin B	tetracycline
+ERR1542086	resistance	resistance	resistance	resistance	resistance	susceptible	resistance	resistance	susceptible	resistance	resistance	susceptible	susceptible	resistance	resistance	resistance
