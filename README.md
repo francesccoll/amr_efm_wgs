@@ -30,7 +30,7 @@ This GitHub project contains the data and code necessary to reproduce the findin
 # Installation and Usage
 
 ## 1. Download this GitHub project
-And navigate to downloaded directory
+And navigate to the downloaded directory
 ```console
 git clone https://github.com/francesccoll/amr_efm_wgs/
 cd amr_efm_wgs
