@@ -1,7 +1,7 @@
 # Antimicrobial resistance (amr) detection from *Enterococcus faecium* (efm) whole-genome sequences (wgs)
 ARIBA-based pipeline for genotypic prediction of AMR from whole-genome sequences of *Enterococcus faecium*
 
-This GitHub project contains the data and code necessary to reproduce the findings of the study 'Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences', and includes the following directories:
+This GitHub project contains the data and code necessary to reproduce the findings of the study 'Antibiotic resistance determination using *Enterococcus faecium* whole-genome sequences: a diagnostic accuracy study using genotypic and phenotypic data', and includes the following directories:
 * amr_database: directory with database (catalogue) of AMR genetic determinants for *E. faecium* and scripts needed to transform it into an ARIBA-compliant format.
 * ariba_amr_database: directory with input files and scripts to run ARIBA and call resistance from *E. faecium* genomes based on our curated catalogue of AMR genetic determinants for *E. faecium*.
 * amrfinder: directory with scripts and files needed to run AMRFinderPlus from *E. faecium* assemblies, and parse AMRFinderPlus results.
@@ -121,4 +121,4 @@ ariba prepareref -f enterococci_amr_genes.v0.3.ariba_genes.fa -m enterococci_amr
 
 
 # Citation
-Coll F, *et al.* Improved accuracy of antibiotic resistance determination from *Enterococcus faecium* whole-genome sequences. (submitted for publication)
+Coll F, Gouliouris T, Blane B, *et al.* Antibiotic resistance determination using *Enterococcus faecium* whole-genome sequences: a diagnostic accuracy study using genotypic and phenotypic data. *The Lancet Microbe.* 2024;5(2):e151-e163. doi:10.1016/S2666-5247(23)00297-5
